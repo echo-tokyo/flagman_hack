@@ -9,18 +9,38 @@
 </head>
 <body>
     <header>
-        <div class="header-l">
+        <nav class="header-l">
             <a href="#">Вход</a>
             <a href="#">Регистрация</a>
             <a href="#">Как гость</a>
-        </div>
-        <div class="header-r">
+        </nav>
+        <nav class="header-r">
             <a href="#">Начать отчет</a>
             <a href="#">История</a>
             <a href="#">Статистика</a>
             <a href="#">Денежный поток</a>
             <a href="#">Лимиты</a>
-        </div>
+        </nav>
     </header>
+    <main>
+        <div class="block1">
+            <h1>Начать отчет</h1>
+             <form class="choose" action="">
+                <p>Выберите:</p>
+                <p>Расход</p>
+                <input class="radio" type="radio">
+                <p>Доход</p>
+                <input class="radio" type="radio">
+             </form>
+             <form class="block1-inputs" action="">
+                <input type="text" placeholder="Название расхода">
+                <input type="text" placeholder="Название дохода">
+                <input type="text" placeholder="Сумма расхода">
+            </form>
+            <form class="block1-button" action="">
+                <button>Добавить</button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
