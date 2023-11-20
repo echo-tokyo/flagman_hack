@@ -12,11 +12,17 @@ if(data !== "" && data !== null) {
 
 for (const msg of msgList) {
     createNewMsg(msg)
-    createNewElement(msg)
-    createNewElementAndSlide(msg)
 }
 
-function createNewMsg(obj) { 
+// for (let i = 0; i < 4; i++) {
+//     createNewMsg(msgList[i])
+// }
+
+// for (let i = 4; i < JSON.stringify(msgList).length; i += 4) {
+//   createNewElement(msgList[i])
+// }
+
+function createNewMsg(obj) {
     let container = document.querySelector('.swiper-slide')
     
     let div = document.createElement('div')
@@ -97,6 +103,7 @@ document.getElementById('add-msg-form').addEventListener('submit', function(even
     
     let slide = document.querySelector('.swiper-slide')
     let numElem = slide.childElementCount
+
     if(numElem < 4){
         msgList.push(msgObj)
         createNewMsg(msgObj)
@@ -105,6 +112,7 @@ document.getElementById('add-msg-form').addEventListener('submit', function(even
             msgList.push(msgObj)
             createNewElement(msgObj)
         } else{
+            console.log('new slide')
             msgList.push(msgObj)
             createNewElementAndSlide(msgObj)
         }
