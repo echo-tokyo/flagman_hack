@@ -6,7 +6,7 @@ new Swiper('.swiper-container', {
 let data = localStorage.getItem('msgList')
 let msgList = []
 
-if(data !== "" && data !== null) {
+if (data !== "" && data !== null) {
     msgList = JSON.parse(data)
 }
 
@@ -18,13 +18,13 @@ for (const msg of msgList) {
 let existingData = localStorage.getItem('newInfo')
 let existingObject = []
 
-if(existingData !== "" && existingData !== null) {
+if (existingData !== "" && existingData !== null) {
     existingObject = JSON.parse(existingData)
 }
 
 function createNewMsg(obj) {
     let container = document.querySelector('.swiper-slide')
-    
+
     let div = document.createElement('div')
     div.classList.add('item')
     let div2 = document.createElement('div')
@@ -36,7 +36,7 @@ function createNewMsg(obj) {
     let img = document.createElement('img')
     img.setAttribute('src', 'images/burger-menu-svgrepo-com 1.svg')
     img.classList.add('img')
-    
+
     container.append(div)
     div.append(div2)
     div2.append(p)
@@ -44,7 +44,7 @@ function createNewMsg(obj) {
     div.append(img)
 }
 
-function createNewElement(obj){
+function createNewElement(obj) {
     let lastSlide = document.querySelector('.swiper-wrapper').lastElementChild
 
     let div = document.createElement('div')
@@ -59,7 +59,7 @@ function createNewElement(obj){
     img.setAttribute('src', 'images/burger-menu-svgrepo-com 1.svg')
     img.classList.add('img')
 
-            
+
     lastSlide.appendChild(div)
     div.appendChild(div2)
     div2.appendChild(p)
@@ -67,9 +67,9 @@ function createNewElement(obj){
     div.appendChild(img)
 }
 
-function createNewElementAndSlide(obj){
+function createNewElementAndSlide(obj) {
     let container = document.querySelector('.swiper-wrapper')
-    
+
     let newSlide = document.createElement('div')
     newSlide.classList.add('swiper-slide')
     let div = document.createElement('div')
@@ -92,11 +92,11 @@ function createNewElementAndSlide(obj){
     div.appendChild(img)
 }
 
-document.getElementById('add-msg-form').addEventListener('submit', function(event){
+document.getElementById('add-msg-form').addEventListener('submit', function (event) {
     event.preventDefault()
     let consumptionName = document.getElementById('consumptionName').value
     let consumptionSum = document.getElementById('consumptionSum').value
-    
+
     let msgObj = {
         name: consumptionName,
         sum: consumptionSum
@@ -104,20 +104,20 @@ document.getElementById('add-msg-form').addEventListener('submit', function(even
 
     let lastSlide = document.querySelector('.swiper-wrapper').lastElementChild
     let numLastElems = lastSlide.childElementCount
-    
+
     let slide = document.querySelector('.swiper-slide')
     let numElem = slide.childElementCount
 
-    if(numElem < 4){
+    if (numElem < 4) {
         msgList.push(msgObj)
         createNewMsg(msgObj)
         localStorage.setItem('msgList', JSON.stringify(msgList))
-    } else{
-        if(numLastElems < 4){
+    } else {
+        if (numLastElems < 4) {
             existingObject.push(msgObj)
             createNewElement(msgObj)
             localStorage.setItem('newInfo', JSON.stringify(existingObject))
-        } else{
+        } else {
             existingObject.push(msgObj)
             createNewElementAndSlide(msgObj)
             localStorage.setItem('newInfo', JSON.stringify(existingObject))
@@ -125,28 +125,58 @@ document.getElementById('add-msg-form').addEventListener('submit', function(even
     }
 })
 
-const imgs = document.querySelectorAll('.img')
-
-imgs.forEach(img => {
-    img.addEventListener('click', function(event){
-        let container = event.target.parentNode
-        let div = document.createElement('div')
-        div.classList.add('menu')
-        let div2 = document.createElement('div')
-        div2.classList.add('menu-text')
-        let p = document.createElement('p')
-        p.innerHTML = '20.20.2002'
-        let p2 = document.createElement('p')
-        p2.innerHTML = 'Категория'
-        let img = document.createElement('img')
-        img.setAttribute('src', 'images/burger-menu-svgrepo-com.svg')
-        
-        container.appendChild(div)
-        div.appendChild(div2)
-        div2.appendChild(p)
-        div2.appendChild(p2)
-        div.appendChild(img)
-
-        event.target.parentNode.removeChild(event.target)
+function test2() {
+    const whiteImgs = document.querySelectorAll('.img')
+    
+    whiteImgs.forEach(img => {
+        img.addEventListener('click', function (event) {
+            let container = event.target.parentNode
+    
+            let div = document.createElement('div')
+            div.classList.add('menu')
+            let div2 = document.createElement('div')
+            div2.classList.add('menu-text')
+            let p = document.createElement('p')
+            p.innerHTML = '20.20.2002'
+            let p2 = document.createElement('p')
+            p2.innerHTML = 'Категория'
+            let img = document.createElement('img')
+            img.classList.add('blackImg')
+            img.setAttribute('src', 'images/burger-menu-svgrepo-com.svg')
+    
+            container.appendChild(div)
+            div.appendChild(div2)
+            div2.appendChild(p)
+            div2.appendChild(p2)
+            div.appendChild(img)
+    
+            event.target.parentNode.removeChild(event.target)
+            test()
+        })
     })
-})
+}
+
+test2()
+
+function test(){
+    const blackImgs = document.querySelectorAll('.blackImg')
+    
+    blackImgs.forEach(img => {
+        img.addEventListener('click', function (event) {
+            
+            let container = event.target.parentNode
+            let item = container.parentNode
+            item.removeChild(document.querySelector('.menu'))
+    
+            let img = document.createElement('img')
+            img.classList.add('img')
+            img.setAttribute('src', 'images/burger-menu-svgrepo-com 1.svg')
+    
+            item.appendChild(img)  
+    
+            event.target.parentNode.removeChild(event.target)
+
+            test2()
+        })
+    })
+}
