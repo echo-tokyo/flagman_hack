@@ -47,10 +47,12 @@ document.getElementById('add-msg-form').addEventListener('submit', function (eve
     event.preventDefault()
     let consumptionName = document.getElementById('consumptionName').value
     let consumptionSum = document.getElementById('consumptionSum').value
+    let category = document.getElementById('category').value
 
     let msgObj = {
         name: consumptionName,
-        sum: consumptionSum
+        sum: consumptionSum,
+        category: category
     }
 
     createNewMsg(msgObj)
@@ -64,7 +66,6 @@ allSvgs.forEach(svg => {
     svg.addEventListener('click', function (event) {
         if(event.target.classList.contains('whiteSvg')){
             let container = event.target.parentNode
-    
             let div = document.createElement('div')
             div.classList.add('menu')
             let div2 = document.createElement('div')
@@ -83,10 +84,10 @@ allSvgs.forEach(svg => {
             div2.appendChild(p2)
             div.appendChild(svg)
         } else if(event.target.classList.contains('blackSvg')){
-            console.log(event.target.parentNode)
             let menu = event.target.parentNode
             let container = menu.parentNode
             menu.parentNode.removeChild(menu)
+
             let svg = event.target
             svg.classList.add('whiteSvg')
             svg.classList.remove('blackSvg')
