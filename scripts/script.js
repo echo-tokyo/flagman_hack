@@ -57,44 +57,39 @@ document.getElementById('add-msg-form').addEventListener('submit', function (eve
     localStorage.setItem('msgList', JSON.stringify(msgList))
 })
 
-const whiteSvgs = document.querySelectorAll('.whiteSvg')
+const allSvgs = document.querySelectorAll('.whiteSvg')
 
-whiteSvgs.forEach(svg => {
+allSvgs.forEach(svg => {
     svg.addEventListener('click', function (event) {
-        let container = event.target.parentNode
+        if(event.target.classList.contains('whiteSvg')){
+            let container = event.target.parentNode
+    
+            let div = document.createElement('div')
+            div.classList.add('menu')
+            let div2 = document.createElement('div')
+            div2.classList.add('menu-text')
+            let p = document.createElement('p')
+            p.innerHTML = '20.20.2002'
+            let p2 = document.createElement('p')
+            p2.innerHTML = 'Категория'
+            let svg = event.target
+            svg.classList.add('blackSvg')
+            svg.classList.remove('whiteSvg')
 
-        let div = document.createElement('div')
-        div.classList.add('menu')
-        let div2 = document.createElement('div')
-        div2.classList.add('menu-text')
-        let p = document.createElement('p')
-        p.innerHTML = '20.20.2002'
-        let p2 = document.createElement('p')
-        p2.innerHTML = 'Категория'
-        svg.style.color = 'white'
-        console.log(event.target)
-        container.appendChild(div)
-        div.appendChild(div2)
-        div2.appendChild(p)
-        div2.appendChild(p2)
-    })
-})
+            container.appendChild(div)
+            div.appendChild(div2)
+            div2.appendChild(p)
+            div2.appendChild(p2)
+            div.appendChild(svg)
+        } else if(event.target.classList.contains('blackSvg')){
+            let menu = document.querySelector('.menu')
 
-const blackSvgs = document.querySelectorAll('.blackSvg')
+            let container = menu.parentNode
+            menu.parentNode.removeChild(menu)
+            let svg = event.target
+            svg.classList.add('whiteSvg')
 
-blackSvgs.forEach(svg => {
-    svg.addEventListener('click', function (event) {
-        
-        let container = event.target.parentNode
-        let item = container.parentNode
-        item.removeChild(document.querySelector('.menu'))
-
-        let img = document.createElement('img')
-        img.classList.add('img')
-        img.setAttribute('src', 'images/burger-menu-svgrepo-com 1.svg')
-        
-        item.appendChild(img)  
-        
-        event.target.parentNode.removeChild(event.target)
+            container.appendChild(svg)
+        }
     })
 })
