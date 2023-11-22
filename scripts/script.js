@@ -83,8 +83,8 @@ allSvgs.forEach(svg => {
             div2.appendChild(p2)
             div.appendChild(svg)
         } else if(event.target.classList.contains('blackSvg')){
-            let menu = document.querySelector('.menu')
-
+            console.log(event.target.parentNode)
+            let menu = event.target.parentNode
             let container = menu.parentNode
             menu.parentNode.removeChild(menu)
             let svg = event.target
@@ -95,4 +95,3 @@ allSvgs.forEach(svg => {
         }
     })
 })
-
