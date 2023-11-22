@@ -32,6 +32,7 @@ function createNewMsg(obj) {
     svg.setAttribute('viewBox', '0 0 33 26')
     svg.classList.add('whiteSvg')
     let path = document.createElementNS('http://www.w3.org/2000/svg','path')
+    path.style.pointerEvents = 'none'
     path.setAttribute('d', 'M0.0856018 25.5V21.3333H32.6514V25.5H0.0856018ZM0.0856018 15.0833V10.9167H32.6514V15.0833H0.0856018ZM0.0856018 4.66667V0.5H32.6514V4.66667H0.0856018Z')
 
     container.appendChild(div)
@@ -55,10 +56,10 @@ document.getElementById('add-msg-form').addEventListener('submit', function (eve
     createNewMsg(msgObj)
     msgList.push(msgObj)
     localStorage.setItem('msgList', JSON.stringify(msgList))
+    window.location.reload()
 })
 
-const allSvgs = document.querySelectorAll('.whiteSvg')
-
+let allSvgs = document.querySelectorAll('.whiteSvg')
 allSvgs.forEach(svg => {
     svg.addEventListener('click', function (event) {
         if(event.target.classList.contains('whiteSvg')){
@@ -75,7 +76,7 @@ allSvgs.forEach(svg => {
             let svg = event.target
             svg.classList.add('blackSvg')
             svg.classList.remove('whiteSvg')
-
+            
             container.appendChild(div)
             div.appendChild(div2)
             div2.appendChild(p)
@@ -88,8 +89,10 @@ allSvgs.forEach(svg => {
             menu.parentNode.removeChild(menu)
             let svg = event.target
             svg.classList.add('whiteSvg')
+            svg.classList.remove('blackSvg')
 
             container.appendChild(svg)
         }
     })
 })
+
