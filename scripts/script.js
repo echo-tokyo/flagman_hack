@@ -57,10 +57,10 @@ document.getElementById('add-msg-form').addEventListener('submit', function (eve
     localStorage.setItem('msgList', JSON.stringify(msgList))
 })
 
-const whiteImgs = document.querySelectorAll('.img')
+const whiteSvgs = document.querySelectorAll('.whiteSvg')
 
-whiteImgs.forEach(img => {
-    img.addEventListener('click', function (event) {
+whiteSvgs.forEach(svg => {
+    svg.addEventListener('click', function (event) {
         let container = event.target.parentNode
 
         let div = document.createElement('div')
@@ -71,24 +71,19 @@ whiteImgs.forEach(img => {
         p.innerHTML = '20.20.2002'
         let p2 = document.createElement('p')
         p2.innerHTML = 'Категория'
-        let img = document.createElement('img')
-        img.classList.add('blackImg')
-        img.setAttribute('src', 'images/burger-menu-svgrepo-com.svg')
-
+        svg.style.color = 'white'
+        console.log(event.target)
         container.appendChild(div)
         div.appendChild(div2)
         div2.appendChild(p)
         div2.appendChild(p2)
-        div.appendChild(img)
-
-        event.target.parentNode.removeChild(event.target)
     })
 })
 
-const blackImgs = document.querySelectorAll('.blackImg')
+const blackSvgs = document.querySelectorAll('.blackSvg')
 
-blackImgs.forEach(img => {
-    img.addEventListener('click', function (event) {
+blackSvgs.forEach(svg => {
+    svg.addEventListener('click', function (event) {
         
         let container = event.target.parentNode
         let item = container.parentNode
