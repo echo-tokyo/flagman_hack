@@ -9,13 +9,6 @@ for (const msg of msgList) {
     createNewMsg(msg)
 }
 
-let existingData = localStorage.getItem('newInfo')
-let existingObject = []
-
-if (existingData !== "" && existingData !== null) {
-    existingObject = JSON.parse(existingData)
-}
-
 function createNewMsg(obj) {
     let container = document.querySelector('.swiper-slide')
 
@@ -73,7 +66,7 @@ allSvgs.forEach(svg => {
             let p = document.createElement('p')
             p.innerHTML = '20.20.2002'
             let p2 = document.createElement('p')
-            p2.innerHTML = 'Категория'
+            p2.innerHTML = msgList[0].category
             let svg = event.target
             svg.classList.add('blackSvg')
             svg.classList.remove('whiteSvg')
@@ -95,4 +88,10 @@ allSvgs.forEach(svg => {
             container.appendChild(svg)
         }
     })
+})
+
+document.getElementById('clear').addEventListener('click', (event) => {
+    event.preventDefault
+    localStorage.clear()
+    window.location.reload()
 })
