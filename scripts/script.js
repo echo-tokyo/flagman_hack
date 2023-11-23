@@ -12,28 +12,51 @@ for (const msg of msgList) {
 function createNewMsg(obj) {
     let container = document.querySelector('.swiper-slide')
 
-    let div = document.createElement('div')
-    div.classList.add('item')
-    let div2 = document.createElement('div')
-    div2.classList.add('item-text')
+    let item = document.createElement('div')
+    item.classList.add('item')
+    let itemText = document.createElement('div')
+    itemText.classList.add('item-text')
     let p = document.createElement('p')
     p.innerHTML = obj.name
     let p2 = document.createElement('p')
     p2.innerHTML = obj.sum
+    let menu = document.createElement('div')
+    menu.classList.add('menu')
+    menu.classList.add('hidden')
+    let menuText = document.createElement('div')
+    menuText.classList.add('menu-text')
+    let p3 = document.createElement('p')
+    p3.innerHTML = '20.20.2002'
+    let p4 = document.createElement('p')
+    p4.innerHTML = obj.category
     let svg = document.createElementNS('http://www.w3.org/2000/svg','svg')
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
     svg.setAttribute('viewBox', '0 0 33 26')
-    svg.classList.add('whiteSvg')
+    svg.classList.add('blackSvg')
     let path = document.createElementNS('http://www.w3.org/2000/svg','path')
     path.style.pointerEvents = 'none'
     path.setAttribute('d', 'M0.0856018 25.5V21.3333H32.6514V25.5H0.0856018ZM0.0856018 15.0833V10.9167H32.6514V15.0833H0.0856018ZM0.0856018 4.66667V0.5H32.6514V4.66667H0.0856018Z')
 
-    container.appendChild(div)
-    div.appendChild(div2)
-    div2.appendChild(p)
-    div2.appendChild(p2)
-    div.appendChild(svg)
+    let svg2 = document.createElementNS('http://www.w3.org/2000/svg','svg')
+    svg2.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    svg2.setAttribute('viewBox', '0 0 33 26')
+    svg2.classList.add('whiteSvg')
+    let path2 = document.createElementNS('http://www.w3.org/2000/svg','path')
+    path2.style.pointerEvents = 'none'
+    path2.setAttribute('d', 'M0.0856018 25.5V21.3333H32.6514V25.5H0.0856018ZM0.0856018 15.0833V10.9167H32.6514V15.0833H0.0856018ZM0.0856018 4.66667V0.5H32.6514V4.66667H0.0856018Z')
+    
+    container.appendChild(item)
+    item.appendChild(itemText)
+    itemText.appendChild(p)
+    itemText.appendChild(p2)
+    item.appendChild(menu)
+    menu.appendChild(menuText)
+    menuText.appendChild(p3)
+    menuText.appendChild(p4)
+    menu.appendChild(svg)
     svg.appendChild(path)
+    item.appendChild(svg2)
+    svg2.appendChild(path2)
 }
 
 document.getElementById('add-msg-form').addEventListener('submit', function (event) {
@@ -54,39 +77,28 @@ document.getElementById('add-msg-form').addEventListener('submit', function (eve
     window.location.reload()
 })
 
-let allSvgs = document.querySelectorAll('.whiteSvg')
-allSvgs.forEach(svg => {
+let allWhiteSvgs = document.querySelectorAll('.whiteSvg')
+allWhiteSvgs.forEach(svg => {
     svg.addEventListener('click', function (event) {
-        if(event.target.classList.contains('whiteSvg')){
-            let container = event.target.parentNode
-            let div = document.createElement('div')
-            div.classList.add('menu')
-            let div2 = document.createElement('div')
-            div2.classList.add('menu-text')
-            let p = document.createElement('p')
-            p.innerHTML = '20.20.2002'
-            let p2 = document.createElement('p')
-            p2.innerHTML = msgList[0].category
-            let svg = event.target
-            svg.classList.add('blackSvg')
-            svg.classList.remove('whiteSvg')
-            
-            container.appendChild(div)
-            div.appendChild(div2)
-            div2.appendChild(p)
-            div2.appendChild(p2)
-            div.appendChild(svg)
-        } else if(event.target.classList.contains('blackSvg')){
-            let menu = event.target.parentNode
-            let container = menu.parentNode
-            menu.parentNode.removeChild(menu)
+        let svg = event.target
+        let container = svg.parentNode
+        let menu = container.children[1]
 
-            let svg = event.target
-            svg.classList.add('whiteSvg')
-            svg.classList.remove('blackSvg')
+        menu.classList.remove('hidden')
+        svg.classList.add('hidden')        
+    })
+})
 
-            container.appendChild(svg)
-        }
+let allBlackSvgs = document.querySelectorAll('.blackSvg')
+allBlackSvgs.forEach(svg => {
+    svg.addEventListener('click', function (event) {
+        let svg = event.target
+        let menu = svg.parentNode
+        let container = menu.parentNode
+        let svg2 = container.children[2]
+        
+        menu.classList.add('hidden')      
+        svg2.classList.remove('hidden')
     })
 })
 
