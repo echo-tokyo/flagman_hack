@@ -1,3 +1,13 @@
+let radio1 = document.getElementById('radio1')
+let radio2 = document.getElementById('radio2')
+
+radio1.onclick = function(){
+    radio2.checked = false
+}
+radio2.onclick = function(){
+    radio1.checked = false
+}
+
 let data = localStorage.getItem('msgList')
 let msgList = []
 
@@ -71,8 +81,10 @@ document.getElementById('add-msg-form').addEventListener('submit', function (eve
         category: category
     }
 
-    createNewMsg(msgObj)
-    msgList.push(msgObj)
+    if(radio1.checked){
+        createNewMsg(msgObj)
+        msgList.push(msgObj)
+    }
     localStorage.setItem('msgList', JSON.stringify(msgList))
     window.location.reload()
 })
