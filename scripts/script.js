@@ -24,6 +24,7 @@ function createNewMsg(obj) {
 
     let item = document.createElement('div')
     item.classList.add('item')
+    item.classList.add(obj.colour)
     let itemText = document.createElement('div')
     itemText.classList.add('item-text')
     let p = document.createElement('p')
@@ -74,17 +75,22 @@ document.getElementById('add-msg-form').addEventListener('submit', function (eve
     let consumptionName = document.getElementById('consumptionName').value
     let consumptionSum = document.getElementById('consumptionSum').value
     let category = document.getElementById('category').value
+    let colour
+    if(radio1.checked){
+        colour = 'itemRed'
+    }else if(radio2.checked){
+        colour = 'itemGreen'
+    }
 
     let msgObj = {
         name: consumptionName,
         sum: consumptionSum,
-        category: category
+        category: category,
+        colour: colour
     }
 
-    if(radio1.checked){
-        createNewMsg(msgObj)
-        msgList.push(msgObj)
-    }
+    createNewMsg(msgObj)
+    msgList.push(msgObj)
     localStorage.setItem('msgList', JSON.stringify(msgList))
     window.location.reload()
 })

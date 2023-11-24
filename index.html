@@ -24,20 +24,22 @@
     <main>
         <div class="block1">
             <h1>Начать отчет</h1>
-            <form class="choose" action="">
-                <p>Выберите:</p>
-                <p>Расход</p>
-                <input class="radio" type="radio" id="radio1">
-                <p>Доход</p>
-                <input class="radio" type="radio" id="radio2">
-            </form>
-            <form class="block1-inputs" action="">
-                <input type="text" placeholder="Название расхода" id="consumptionName" required>
-                <input type="text" placeholder="Сумма расхода" id="consumptionSum">
-                <input type="text" placeholder="Категория" id="category">
-            </form>
-            <form class="block1-button" action="" id="add-msg-form">
-                <button>Добавить</button>
+            <form class="form" id="add-msg-form">
+                <div class="choose">
+                    <p>Выберите:</p>
+                    <p>Расход</p>
+                    <input class="radio" type="radio" id="radio1">
+                    <p>Доход</p>
+                    <input class="radio" type="radio" id="radio2">
+                </div>
+                <div class="block1-inputs">
+                    <input type="text" placeholder="Название расхода" id="consumptionName" required>
+                    <input type="text" placeholder="Сумма расхода" id="consumptionSum" required>
+                    <input type="text" placeholder="Категория" id="category">
+                </div>
+                <div class="block1-button">
+                    <button>Добавить</button>
+                </div>
             </form>
         </div>
         <div class="block2">
