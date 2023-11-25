@@ -8,6 +8,7 @@ radio2.onclick = function(){
     radio1.checked = false
 }
 
+
 let data = localStorage.getItem('msgList')
 let msgList = []
 
@@ -81,14 +82,13 @@ document.getElementById('add-msg-form').addEventListener('submit', function (eve
     }else if(radio2.checked){
         colour = 'itemGreen'
     }
-
+    
     let msgObj = {
         name: consumptionName,
         sum: consumptionSum,
         category: category,
         colour: colour
     }
-
     createNewMsg(msgObj)
     msgList.push(msgObj)
     localStorage.setItem('msgList', JSON.stringify(msgList))
@@ -101,7 +101,7 @@ allWhiteSvgs.forEach(svg => {
         let svg = event.target
         let container = svg.parentNode
         let menu = container.children[1]
-
+        
         menu.classList.remove('hidden')
         svg.classList.add('hidden')        
     })
@@ -120,8 +120,13 @@ allBlackSvgs.forEach(svg => {
     })
 })
 
-document.getElementById('clear').addEventListener('click', (event) => {
+let clearBtn = document.getElementById('clear')
+clearBtn.addEventListener('click', (event) => {
     event.preventDefault
     localStorage.clear()
     window.location.reload()
 })
+
+if (localStorage.length > 0){
+    clearBtn.innerText = 'Очистить'
+}
