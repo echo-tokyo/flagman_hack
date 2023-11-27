@@ -30,7 +30,7 @@ function createNewMsg(obj) {
     let p = document.createElement('p')
     p.innerHTML = obj.name
     let p2 = document.createElement('p')
-    p2.innerHTML = obj.sum
+    p2.innerHTML = parseInt(obj.sum).toLocaleString('en-US')
     let menu = document.createElement('div')
     menu.classList.add('menu')
     menu.classList.add('hidden')
