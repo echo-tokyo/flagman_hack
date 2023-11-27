@@ -30,7 +30,13 @@ function createNewMsg(obj) {
     let p = document.createElement('p')
     p.innerHTML = obj.name
     let p2 = document.createElement('p')
-    p2.innerHTML = parseInt(obj.sum).toLocaleString('en-US')
+    if (obj.colour == 'itemRed'){
+        p2.innerHTML = '-' + parseInt(obj.sum).toLocaleString('en-US')
+    } else if(obj.colour == 'itemGreen'){
+        p2.innerHTML = '+' + parseInt(obj.sum).toLocaleString('en-US')
+    } else{
+        p2.innerHTML = parseInt(obj.sum).toLocaleString('en-US')
+    }
     let menu = document.createElement('div')
     menu.classList.add('menu')
     menu.classList.add('hidden')
