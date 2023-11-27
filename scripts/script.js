@@ -1,5 +1,5 @@
-let radio1 = document.getElementById('radio1')
-let radio2 = document.getElementById('radio2')
+const radio1 = document.getElementById('radio1')
+const radio2 = document.getElementById('radio2')
 
 radio1.onclick = function(){
     radio2.checked = false
@@ -7,7 +7,6 @@ radio1.onclick = function(){
 radio2.onclick = function(){
     radio1.checked = false
 }
-
 
 let data = localStorage.getItem('msgList')
 let msgList = []
@@ -38,9 +37,12 @@ function createNewMsg(obj) {
     let menuText = document.createElement('div')
     menuText.classList.add('menu-text')
     let p3 = document.createElement('p')
-    p3.innerHTML = '20.20.2002'
+    p3.innerHTML = obj.date
     let p4 = document.createElement('p')
     p4.innerHTML = obj.category
+    if (p4.innerHTML == ''){
+        p4.innerHTML = 'Категория'
+    }
     let svg = document.createElementNS('http://www.w3.org/2000/svg','svg')
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
     svg.setAttribute('viewBox', '0 0 33 26')
@@ -76,6 +78,11 @@ document.getElementById('add-msg-form').addEventListener('submit', function (eve
     let consumptionName = document.getElementById('consumptionName').value
     let consumptionSum = document.getElementById('consumptionSum').value
     let category = document.getElementById('category').value
+    var currentDate = new Date();
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1;
+    var year = currentDate.getFullYear();
+    var formattedDate = day + "." + month + "." + year;
     let colour
     if(radio1.checked){
         colour = 'itemRed'
@@ -87,7 +94,8 @@ document.getElementById('add-msg-form').addEventListener('submit', function (eve
         name: consumptionName,
         sum: consumptionSum,
         category: category,
-        colour: colour
+        colour: colour,
+        date: formattedDate
     }
     createNewMsg(msgObj)
     msgList.push(msgObj)
