@@ -1,0 +1,95 @@
+html,body{
+    height: 100vh;
+    background: -webkit-linear-gradient(135deg, rgb(43, 255, 207), rgb(208, 84, 255) 100%);
+    background: -moz-linear-gradient(135deg, rgb(43, 255, 207), rgb(208, 84, 255) 100%);
+    background: linear-gradient(135deg, rgb(43, 255, 207), rgb(208, 84, 255) 100%);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.block{
+    width: 574px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 15px;
+    filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.25));
+    transition: 1s;
+}
+
+.block:hover{
+    transform: scale(1.03);
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding-top: 80px;
+}
+
+.title h1{
+    color: #000;
+    font-family: Montserrat, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.title a{
+    color: #5E5E5E;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration:none;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 65px;
+    gap: 10px;
+}
+
+form input{
+    width: 340px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    border: hidden;
+    padding: 0;
+}
+
+::placeholder{
+    color: #fff;
+}
+
+#btn{
+    transition: 1s;
+    margin-top: 10px;
+    padding: 0;
+}
+
+#btn:hover{
+    transform: scale(1.03);
+}
+.error{
+    border: 2.5px solid red;
+}
