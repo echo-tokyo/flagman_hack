@@ -1,12 +1,19 @@
 {% load static %}
     <link rel="stylesheet" href="{% static '/users/css/reset.css' %}">
-    <link rel="stylesheet" href="{% static '/users/css/style.css' %}">
-	<h1>REGISTRATION PAGE</h1>
-    {% if form.errors %}
-    	<p>{{ form.errors.error }}</p>
-    {% endif %}
-    <form action="{% url 'register' %}" method="post">
-    {{ form }}
-    {% csrf_token %}
-    <button type="submit">Подвердить</button>
-    </form>
+    <link rel="stylesheet" href="{% static '/users/css/style2.css' %}">
+
+<div class="container">
+        <div class="block">
+            <div class="title">
+                <h1>Регистрация</h1>
+                <a href="{% url 'login' %}">Вход</a>
+            </div>
+            <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+                <input type="text" placeholder="Почта" name="username">
+                <input type="password" placeholder="Пароль" name="password1">
+                <input type="password" placeholder="Подвердите пароль" name="password2">
+                <input type="submit" id="btn" value="Зарегистрироваться" {% if form.errors %} class="error" {% endif %}>
+            </form>
+        </div>
+    </div>
