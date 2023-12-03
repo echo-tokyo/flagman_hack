@@ -1,0 +1,12 @@
+{% load static %}
+    <link rel="stylesheet" href="{% static '/users/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static '/users/css/style.css' %}">
+	<h1>REGISTRATION PAGE</h1>
+    {% if form.errors %}
+    	<p>{{ form.errors.error }}</p>
+    {% endif %}
+    <form action="{% url 'register' %}" method="post">
+    {{ form }}
+    {% csrf_token %}
+    <button type="submit">Подвердить</button>
+    </form>

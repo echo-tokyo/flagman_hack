@@ -1,28 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Отчеты</title>
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-    <header>
-        <nav class="header-l">
-            <a href="#">Вход</a>
-            <a href="#">Регистрация</a>
-        </nav>
-        <nav class="header-r">
-            <a href="#">Начать отчет</a>
-            <a href="#">История</a>
-            <a href="#">Статистика</a>
-            <a href="#">Денежный поток</a>
-            <a href="#">Лимиты</a>
-        </nav>
-    </header>
+{% extends 'base.html' %}
+{% load static   %}
+{% block content %}
     <main>
         <div class="block1">
+            <h1>USER: {{ user }}</h1>
+            <hr>
             <h1>Начать отчет</h1>
             <form class="form" id="add-msg-form">
                 <div class="choose">
@@ -52,6 +34,5 @@
             </div>
         </div>
     </main>
-    <script src="scripts/script.js"></script>
-</body>
-</html>
+    <script src="{% static 'users/js/script.js' %}"></script>
+{% endblock %}

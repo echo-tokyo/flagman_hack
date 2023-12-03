@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/users/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static '/users/css/style.css' %}">
+    <title>Отчеты</title>
+</head>
+<body>
+    <header>
+            <nav class="header-l">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Выход</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Вход</a>
+                    <a href="{% url 'register' %}">Регистрация</a>
+                {% endif %}
+            </nav>
+            <nav class="header-r">
+                <a href="#">Начать отчет</a>
+                <a href="#">История</a>
+                <a href="#">Статистика</a>
+                <a href="#">Денежный поток</a>
+                <a href="#">Лимиты</a>
+            </nav>
+    </header>
+</body>
+{% block content %}
+
+{% endblock %}
