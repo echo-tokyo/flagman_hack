@@ -5,6 +5,14 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class User(AbstractUser):
+    username = models.CharField(
+        _("username"),
+        max_length=150,
+        unique=True,
+        blank=True,
+        help_text=_(
+            "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+        ))
 
     email = models.EmailField(_("email address"), unique=True)
 
