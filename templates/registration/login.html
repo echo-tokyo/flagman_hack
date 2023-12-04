@@ -10,7 +10,7 @@
             </div>
             <form action="{% url 'login' %}" method="post">
                 {% csrf_token %}
-                <input type="text" placeholder="Логин" name="username">
+                <input type="text" placeholder="E-mail" name="username">
                 <input type="password" placeholder="Пароль" name="password">
                 <input type="submit" value="Войти" id="btn" {% if form.errors %} class="error" {% endif %}>
             </form>
