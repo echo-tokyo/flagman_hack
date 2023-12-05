@@ -77,6 +77,22 @@ form input{
     padding: 0;
 }
 
+form label{
+    width: 340px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    border: hidden;
+    padding: 0;
+}
+
 ::placeholder{
     color: #fff;
 }

@@ -7,13 +7,15 @@
             <div class="title">
                 <h1>Вход</h1>
                 <a href="{% url 'register' %}">Регистрация</a>
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" placeholder="E-mail" name="username">
+                    <input type="password" placeholder="Пароль" name="password">
+                    <input type="submit" value="Войти" id="btn" {% if form.errors %} class="error" {% endif %}>
+                </form>
+
+                <a href="{% url 'password_reset' %}">Забыли пароль?</a>
             </div>
-            <form action="{% url 'login' %}" method="post">
-                {% csrf_token %}
-                <input type="text" placeholder="E-mail" name="username">
-                <input type="password" placeholder="Пароль" name="password">
-                <input type="submit" value="Войти" id="btn" {% if form.errors %} class="error" {% endif %}>
-            </form>
         </div>
     </div>
 
